@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 30px;
+            transition: color 0.3s;
+        }
+
+        h2:hover {
+            color: #007bff;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #010101;
+            text-align: left;
+            transition: color 0.3s;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+            transition: opacity 0.3s;
+        }
+
+        .brand-logo {
+            margin-bottom: 30px;
+        }
+
+        .brand-logo img {
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .brand-logo img:hover {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="brand-logo">
+            <img src="logo.png" alt="Logo de votre entreprise">
+        </div>
+        <h2> DOMAINE PROTECTION</h2>
+        <div class="error" id="error"></div>
+        <form id="loginForm" onsubmit="submitForm(event)">
+            <div>
+                <label for="username">Nom de Domaine :</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <input type="submit" value="Se connecter">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            // Vérifiez les informations d'identification ici
+            if (username === "PROTECTION" && password === "12345") {
+                // Redirigez l'utilisateur vers votre application
+                window.location.href = "calculatrice.html";
+            } else {
+                // Affichez un message d'erreur si les informations d'identification sont incorrectes
+                var errorDiv = document.getElementById("error");
+                errorDiv.innerText = "Nom de Domaine ou mot de passe incorrect.";
+                errorDiv.style.opacity = 1;
+                setTimeout(function() {
+                    errorDiv.style.opacity = 0;
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+
+</html>
